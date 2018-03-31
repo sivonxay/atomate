@@ -441,7 +441,7 @@ class VaspDrone(AbstractDrone):
             max_force = max([np.linalg.norm(a) for a in calc["output"]["ionic_steps"][-1]["forces"]])
             if max_force > max_force_threshold:
                 error_msgs.append("Final max force exceeds {} eV".format(max_force_threshold))
-                d["state"] = "error"
+                # d["state"] = "error"
 
             s = Structure.from_dict(d["output"]["structure"])
             if not s.is_valid():
