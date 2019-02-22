@@ -41,6 +41,7 @@ class OptimizeFW(Firework):
                  max_force_threshold=RELAX_MAX_FORCE,
                  auto_npar=">>auto_npar<<",
                  half_kpts_first_relax=HALF_KPOINTS_FIRST_RELAX, parents=None,
+                 handler_group="default",
                  **kwargs):
         """
         Optimize the given structure.
@@ -75,7 +76,8 @@ class OptimizeFW(Firework):
                                   max_force_threshold=max_force_threshold,
                                   ediffg=ediffg,
                                   auto_npar=auto_npar,
-                                  half_kpts_first_relax=half_kpts_first_relax))
+                                  half_kpts_first_relax=half_kpts_first_relax,
+                                  handler_group=handler_group))
         t.append(PassCalcLocs(name=name))
         t.append(
             VaspToDb(db_file=db_file, additional_fields={"task_label": name}))
